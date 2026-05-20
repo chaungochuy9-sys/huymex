@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Châu Ngọc Huy | Digital Marketing Portfolio</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root {
+            --primary-color: #004d4d; /* Màu xanh Teal đậm ngành Y tế/Công nghệ */
+            --accent-color: #b8860b;  /* Màu Vàng Gold cao cấp */
+            --text-dark: #2d3748;
+            --bg-light: #f7fafc;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #002626 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        .tagline {
+            font-style: italic;
+            color: var(--accent-color) !important;
+            font-weight: bold;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+            font-size: 1.8rem;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 8px auto 0 auto;
+        }
+
+        /* PROJECTS GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            border-top-color: var(--accent-color);
+        }
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #ebf8fa;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #002626;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>CHÂU NGỌC HUY</h1>
+        <p>Full-stack Digital Marketer & Content Specialist</p>
+        <p class="tagline">"Biến kiến thức chuyên sâu thành thông điệp chạm đến trái tim."</p>
+        <a href="mailto:chaungochuy9@gmail.com" class="btn">Kết Nối Với Tôi</a>
+    </section>
+
+    <main class="container">
+        <h2 class="section-title">Chi Chiến Dịch Trọng Điểm</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <span class="badge">Y Học Tái Tạo</span>
+                <br><br>
+                <h3>TIARA Healthcare Center</h3>
+                <p>Nghiên cứu tài liệu chuyên sâu tế bào gốc toàn cầu. Xây dựng phễu CRM, Lead Scoring và tổ chức chuỗi Workshop kết nối khách hàng VIP tại HN & TP.HCM.</p>
+            </div>
+
+            <div class="card">
+                <span class="badge">Giáo Dục Quốc Tế</span>
+                <br><br>
+                <h3>VASS School System</h3>
+                <p>Quản trị mạng xã hội toàn hệ thống trường học. Thiết kế Content Calendar, tối ưu chiến dịch Ads tăng trưởng tỷ lệ chốt học phí từ 100% - 300%.</p>
+            </div>
+
+            <div class="card">
+                <span class="badge">Định Cư Quốc Tế</span>
+                <br><br>
+                <h3>Maple Leaf Vietnam</h3>
+                <p>Phát triển hệ thống Content chuẩn SEO cho website doanh nghiệp, sáng tạo ý tưởng video ngắn và tối ưu hóa truyền thông đa nền tảng tiếp cận tệp High-net-worth.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 huymex.com. Được lưu trữ an toàn và miễn phí trên GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
