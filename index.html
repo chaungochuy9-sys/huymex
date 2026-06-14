@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio của Châu Ngọc Huy - Senior Marketing Executive, chuyên Content Strategy, Branding, Lead Generation, SEO, Event Marketing và Marketing Playbook." />
+  <title>Châu Ngọc Huy | Senior Marketing Executive</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    :root {
+      --bg-main: #FAF7F0;
+      --bg-white: #FFFFFF;
+      --bg-cream: #FFFDF8;
+
+      --text-main: #1C1C1C;
+      --text-soft: #6F6A60;
+      --text-muted: #8B8374;
+
+      --gold-primary: #C9A24D;
+      --gold-light: #E8D08A;
+      --gold-soft: #F7E7B1;
+      --gold-deep: #8A6426;
+
+      --charcoal: #171717;
+      --charcoal-2: #24211D;
+      --border-soft: #E8E0D2;
+      --border-light: rgba(232, 224, 210, 0.72);
+
+      --gradient-gold: linear-gradient(135deg, #F7E7B1 0%, #C9A24D 45%, #8A6426 100%);
+      --gradient-gold-soft: linear-gradient(135deg, #FFF8E2 0%, #E8D08A 45%, #C9A24D 100%);
+      --gradient-dark-gold: linear-gradient(135deg, #171717 0%, #2B2418 52%, #C9A24D 100%);
+      --gradient-light-luxury: linear-gradient(135deg, #FFFFFF 0%, #FAF7F0 48%, #F2E4C2 100%);
+
+      --shadow-soft: 0 24px 70px rgba(23, 23, 23, 0.08);
+      --shadow-gold: 0 18px 46px rgba(201, 162, 77, 0.26);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --container: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at top left, rgba(232, 208, 138, 0.18), transparent 30%),
+        linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 0%;
+      height: 3px;
+      z-index: 9999;
+      background: var(--gradient-gold);
+      box-shadow: 0 0 18px rgba(201, 162, 77, 0.55);
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: 0.25s ease;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(232, 224, 210, 0.62);
+    }
+
+    .site-header.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 35px rgba(23, 23, 23, 0.06);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      font-size: 34px;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+
+    .logo span {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav a {
+      position: relative;
+      padding: 10px 13px;
+      color: #2B2A28;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 999px;
+      transition: 0.22s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--gold-deep);
+      background: rgba(247, 231, 177, 0.38);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      cursor: pointer;
+      color: var(--charcoal);
+      font-size: 21px;
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .btn:active,
+    .interactive:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      color: #171717;
+      background: var(--gradient-gold);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 54px rgba(201, 162, 77, 0.35);
+    }
+
+    .btn-outline {
+      color: var(--charcoal);
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(201, 162, 77, 0.42);
+      box-shadow: 0 12px 30px rgba(23, 23, 23, 0.05);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-primary);
+      background: #fff;
+    }
+
+    .ripple {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 0.58s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(20);
+        opacity: 0;
+      }
+    }
+
+    .section {
+      padding: 90px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-deep);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold-primary);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.12;
+      letter-spacing: -0.045em;
+      color: var(--charcoal);
+    }
+
+    h1 {
+      font-size: clamp(46px, 7vw, 92px);
+      font-weight: 900;
+      margin: 12px 0 12px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    p {
+      color: var(--text-soft);
+    }
+
+    .hero {
+      min-height: 860px;
+      padding: 128px 0 160px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 78% 25%, rgba(201, 162, 77, 0.24), transparent 28%),
+        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.82), transparent 22%),
+        var(--gradient-light-luxury);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.26;
+      background-image:
+        linear-gradient(rgba(201, 162, 77, 0.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 162, 77, 0.13) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: linear-gradient(to bottom, transparent, #000 14%, transparent 86%);
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 0.88fr;
+      align-items: center;
+      gap: 56px;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 162, 77, 0.28);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 12px 40px rgba(23, 23, 23, 0.05);
+      color: var(--gold-deep);
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero-badge .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      box-shadow: 0 0 0 6px rgba(201, 162, 77, 0.12);
+    }
+
+    .hero h1 span {
+      background: var(--gradient-dark-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(22px, 2.3vw, 34px);
+      color: var(--gold-deep);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      max-width: 600px;
+      font-size: 18px;
+      color: #514D46;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .socials a {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 162, 77, 0.35);
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--charcoal);
+      font-size: 14px;
+      font-weight: 900;
+      transition: 0.2s ease;
+      box-shadow: 0 12px 26px rgba(23, 23, 23, 0.04);
+    }
+
+    .socials a:hover {
+      transform: translateY(-4px);
+      background: var(--charcoal);
+      color: var(--gold-light);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 590px;
+    }
+
+    .gold-orbit {
+      position: absolute;
+      right: 10px;
+      top: 22px;
+      width: 470px;
+      height: 470px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 33% 28%, #FFF1BE 0%, #D5AA4C 36%, #8A6426 72%, #2A2419 100%);
+      box-shadow: 0 38px 100px rgba(201, 162, 77, 0.26);
+    }
+
+    .gold-orbit::before,
+    .gold-orbit::after {
+      content: '';
+      position: absolute;
+      inset: -28px;
+      border-radius: inherit;
+      border: 1px solid rgba(201, 162, 77, 0.32);
+    }
+
+    .gold-orbit::after {
+      inset: -54px;
+      border-style: dashed;
+      opacity: 0.5;
+      animation: spin 22s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .mockup-stack {
+      position: absolute;
+      left: 0;
+      top: 84px;
+      width: 322px;
+      z-index: 2;
+      transform: rotate(-7deg);
+    }
+
+    .mock-card {
+      min-height: 198px;
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(232, 224, 210, 0.86);
+      box-shadow: 0 24px 70px rgba(23, 23, 23, 0.12);
+      backdrop-filter: blur(16px);
+    }
+
+    .mock-card + .mock-card {
+      margin-top: -54px;
+      margin-left: 84px;
+      transform: rotate(12deg);
+    }
+
+    .mock-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .mock-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold-primary);
+    }
+
+    .mock-line {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(201, 162, 77, 0.54), rgba(23, 23, 23, 0.10));
+      margin-bottom: 10px;
+    }
+
+    .mock-line.short { width: 64%; }
+    .mock-line.mid { width: 84%; }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mock-thumb {
+      height: 72px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,0.9), transparent 34%),
+        linear-gradient(135deg, #EFE2C3, #FFFFFF 45%, #D0AA52);
+      border: 1px solid rgba(201, 162, 77, 0.18);
+    }
+
+    .hero-person {
+      position: absolute;
+      right: 34px;
+      bottom: 0;
+      width: 355px;
+      height: 530px;
+      border-radius: 185px 185px 34px 34px;
+      overflow: hidden;
+      z-index: 3;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.30), transparent 42%),
+        var(--gradient-dark-gold);
+      box-shadow: 0 34px 80px rgba(23, 23, 23, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+    }
+
+    .hero-person::before {
+      content: 'CH';
+      position: absolute;
+      left: 50%;
+      top: 32%;
+      transform: translate(-50%, -50%);
+      font-size: 98px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: 0.78;
+    }
+
+    .hero-person::after {
+      content: 'Thay ảnh chân dung tại đây';
+      position: absolute;
+      left: 50%;
+      bottom: 42px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 80%;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero-name-card {
+      position: absolute;
+      right: 0;
+      bottom: 22px;
+      z-index: 4;
+      padding: 18px 20px;
+      min-width: 218px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(232, 224, 210, 0.9);
+      box-shadow: 0 20px 56px rgba(23, 23, 23, 0.14);
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-name-card strong {
+      display: block;
+      color: var(--charcoal);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .hero-name-card span {
+      color: var(--gold-deep);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .key-wrap {
+      margin-top: -96px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .key-panel {
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(232, 224, 210, 0.92);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      padding: 28px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 92% 5%, rgba(247, 231, 177, 0.45), transparent 36%),
+        #fff;
+      border: 1px solid var(--border-soft);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .stat-card:hover,
+    .feature-card:hover,
+    .project-card:hover,
+    .article-card:hover,
+    .resource-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(201, 162, 77, 0.56);
+      box-shadow: 0 22px 64px rgba(23, 23, 23, 0.10);
+    }
+
+    .stat-card.is-clicked,
+    .feature-card.is-clicked,
+    .project-card.is-clicked,
+    .resource-card.is-clicked,
+    .article-card.is-clicked {
+      animation: clickPulse 0.32s ease;
+    }
+
+    @keyframes clickPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.98); box-shadow: 0 0 0 8px rgba(201, 162, 77, 0.14); }
+      100% { transform: scale(1); }
+    }
+
+    .stat-icon,
+    .feature-icon {
+      width: 58px;
+      height: 58px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(247, 231, 177, 0.70), rgba(255, 255, 255, 0.95));
+      color: var(--gold-deep);
+      font-size: 25px;
+      border: 1px solid rgba(201, 162, 77, 0.20);
+    }
+
+    .stat-number {
+      display: block;
+      margin-bottom: 10px;
+      font-size: clamp(27px, 2.6vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: var(--charcoal);
+    }
+
+    .stat-card:hover .stat-number {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-card p {
+      font-size: 15px;
+      font-weight: 600;
+      color: #625D54;
+    }
+
+    .about-card {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 42px;
+      align-items: center;
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about-photo {
+      min-height: 440px;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 68% 22%, rgba(201, 162, 77, 0.30), transparent 25%),
+        var(--gradient-dark-gold);
+      box-shadow: 0 28px 70px rgba(23, 23, 23, 0.16);
+    }
+
+    .about-photo::before {
+      content: 'CH';
+      position: absolute;
+      left: 50%;
+      top: 43%;
+      transform: translate(-50%, -50%);
+      font-size: 112px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .about-content h2 {
+      text-align: left;
+    }
+
+    .about-content p {
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    .mini-skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .mini-skill {
+      padding: 16px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(232, 224, 210, 0.86);
+      background: var(--bg-cream);
+      text-align: center;
+      transition: 0.2s ease;
+    }
+
+    .mini-skill:hover {
+      transform: translateY(-5px);
+      background: #fff;
+      border-color: rgba(201, 162, 77, 0.45);
+    }
+
+    .mini-skill span {
+      display: block;
+      font-size: 25px;
+      color: var(--gold-deep);
+      margin-bottom: 8px;
+    }
+
+    .mini-skill strong {
+      font-size: 12px;
+      line-height: 1.2;
+      display: block;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 232px;
+      border-radius: 24px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.86);
+      padding: 28px;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      inset: auto 20px 0 20px;
+      height: 3px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: 0.28s ease;
+      border-radius: 999px;
+    }
+
+    .feature-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+    }
+
+    .projects-section {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(247, 231, 177, 0.32), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.76));
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 480px;
+      border-radius: 24px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.90);
+      padding: 20px;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .project-card::before {
+      content: attr(data-number);
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--charcoal);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 900;
+      z-index: 2;
+    }
+
+    .project-logo {
+      height: 76px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 12px 0 22px;
+      background: linear-gradient(135deg, #FFFFFF, #FBF0D3);
+      border: 1px solid rgba(201, 162, 77, 0.18);
+      color: var(--gold-deep);
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .project-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .project-role {
+      font-weight: 800;
+      font-size: 12px;
+      color: var(--gold-deep);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .project-card ul {
+      margin: 12px 0 18px 17px;
+      color: var(--text-soft);
+      font-size: 13px;
+    }
+
+    .project-card li + li {
+      margin-top: 8px;
+    }
+
+    .project-result {
+      margin-top: auto;
+      border-radius: 18px;
+      padding: 14px;
+      background: var(--gradient-gold-soft);
+      color: var(--charcoal);
+      font-weight: 900;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .timeline-wrap {
+      display: grid;
+      grid-template-columns: 0.75fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .timeline-intro {
+      position: sticky;
+      top: 110px;
+      padding: 30px;
+      border-radius: var(--radius-xl);
+      background: var(--gradient-dark-gold);
+      color: white;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .timeline-intro h2,
+    .timeline-intro p {
+      color: white;
+    }
+
+    .timeline-intro p {
+      opacity: 0.78;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold-primary), rgba(232, 224, 210, 0));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 24px;
+      margin-bottom: 18px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 45px rgba(23, 23, 23, 0.05);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -27px;
+      top: 30px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold-primary);
+      box-shadow: 0 0 0 8px rgba(201, 162, 77, 0.14);
+    }
+
+    .timeline-date {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--gold-deep);
+      background: rgba(247, 231, 177, 0.48);
+      font-weight: 900;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 5px;
+    }
+
+    .timeline-item ul {
+      color: var(--text-soft);
+      margin: 14px 0 0 18px;
+      font-size: 14px;
+    }
+
+    .playbook-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .article-card,
+    .resource-card {
+      border-radius: 24px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.9);
+      overflow: hidden;
+      box-shadow: 0 16px 44px rgba(23, 23, 23, 0.05);
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .article-img {
+      height: 160px;
+      background: var(--gradient-light-luxury);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-img::before {
+      content: attr(data-icon);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 58px;
+      filter: grayscale(0.1);
+    }
+
+    .article-body {
+      padding: 20px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(247, 231, 177, 0.58);
+      color: var(--gold-deep);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 12px;
+    }
+
+    .article-body h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .resources-panel {
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .resources-panel h3 {
+      margin-bottom: 18px;
+    }
+
+    .resource-card {
+      display: grid;
+      grid-template-columns: 54px 1fr 28px;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 18px;
+    }
+
+    .file-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #fff;
+      background: var(--gradient-dark-gold);
+    }
+
+    .resource-card strong {
+      display: block;
+      line-height: 1.25;
+      font-size: 14px;
+    }
+
+    .resource-card small {
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .download-icon {
+      color: var(--gold-deep);
+      font-weight: 900;
+    }
+
+    .contact-section {
+      padding-bottom: 110px;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      background: var(--gradient-dark-gold);
+      box-shadow: 0 30px 90px rgba(23, 23, 23, 0.18);
+      color: white;
+    }
+
+    .contact-card h2,
+    .contact-card p {
+      color: white;
+    }
+
+    .contact-card p {
+      opacity: 0.78;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 700;
+    }
+
+    .contact-item span {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--gold-light);
+    }
+
+    .contact-form {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(16px);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 52px;
+      padding: 0 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      background: rgba(255, 255, 255, 0.88);
+      outline: none;
+      font: inherit;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    textarea.form-control {
+      padding-top: 15px;
+      height: 150px;
+      resize: vertical;
+      margin-top: 12px;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold-light);
+      box-shadow: 0 0 0 4px rgba(232, 208, 138, 0.18);
+    }
+
+    .form-submit {
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    .footer {
+      padding: 46px 0 28px;
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr 0.8fr;
+      gap: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .footer h3,
+    .footer strong {
+      color: white;
+    }
+
+    .footer p,
+    .footer a {
+      color: rgba(255, 255, 255, 0.70);
+    }
+
+    .footer a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .copyright {
+      padding-top: 22px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 13px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(23, 23, 23, 0.64);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      width: min(1080px, 100%);
+      max-height: 88vh;
+      overflow: auto;
+      border-radius: 30px;
+      background: #fff;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(232, 224, 210, 0.75);
+      animation: modalIn 0.28s ease both;
+    }
+
+    @keyframes modalIn {
+      from { transform: translateY(18px) scale(0.98); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .modal-head {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 18px;
+      padding: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .modal-head h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      margin-bottom: 8px;
+    }
+
+    .modal-close {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      cursor: pointer;
+      font-size: 22px;
+      transition: 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--charcoal);
+      color: var(--gold-light);
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .case-hero {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      margin-bottom: 26px;
+    }
+
+    .case-visual {
+      min-height: 330px;
+      border-radius: 26px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 80% 15%, rgba(247, 231, 177, 0.42), transparent 34%),
+        var(--gradient-dark-gold);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-visual::before {
+      content: attr(data-brand);
+      position: absolute;
+      left: 24px;
+      bottom: 22px;
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      opacity: 0.95;
+    }
+
+    .case-grid-mini {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+      max-width: 280px;
+      margin-left: auto;
+    }
+
+    .case-mini {
+      height: 92px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(12px);
+    }
+
+    .case-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .case-summary-card {
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-cream);
+    }
+
+    .case-summary-card strong {
+      display: block;
+      color: var(--gold-deep);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .case-blocks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .case-block {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+    }
+
+    .case-block h3 {
+      margin-bottom: 10px;
+      color: var(--gold-deep);
+    }
+
+    .case-block ul {
+      margin-left: 18px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .case-block li + li {
+      margin-top: 8px;
+    }
+
+    .case-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-card {
+      min-height: 160px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      background: var(--gradient-light-luxury);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.2s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 162, 77, 0.55);
+    }
+
+    .gallery-icon {
+      font-size: 34px;
+      color: var(--gold-deep);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      z-index: 3000;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--charcoal);
+      color: var(--gold-light);
+      font-weight: 800;
+      box-shadow: 0 18px 50px rgba(23, 23, 23, 0.26);
+      transition: 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 162, 77, 0.34);
+      background: var(--charcoal);
+      color: var(--gold-light);
+      box-shadow: 0 18px 46px rgba(23, 23, 23, 0.22);
+      cursor: pointer;
+      z-index: 800;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-top:hover {
+      transform: translateY(-5px);
+      background: var(--gold-primary);
+      color: var(--charcoal);
+    }
+
+    @media (max-width: 1120px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .project-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav {
+        position: fixed;
+        top: 76px;
+        left: 20px;
+        right: 20px;
+        display: grid;
+        gap: 4px;
+        padding: 16px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid var(--border-soft);
+        box-shadow: var(--shadow-soft);
+        transform: translateY(-18px);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s ease;
+      }
+
+      .nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .header-actions .btn {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 118px;
+        min-height: auto;
+      }
+
+      .hero-inner,
+      .about-card,
+      .timeline-wrap,
+      .playbook-layout,
+      .contact-card,
+      .case-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .key-grid,
+      .feature-grid,
+      .mini-skills,
+      .case-blocks,
+      .case-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline-intro {
+        position: relative;
+        top: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--container));
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero-actions,
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 420px;
+      }
+
+      .gold-orbit {
+        width: 320px;
+        height: 320px;
+        right: 0;
+      }
+
+      .hero-person {
+        width: 250px;
+        height: 360px;
+        right: 22px;
+      }
+
+      .mockup-stack {
+        width: 240px;
+        top: 40px;
+      }
+
+      .hero-name-card {
+        right: 8px;
+        bottom: -8px;
+        min-width: 180px;
+      }
+
+      .key-wrap {
+        margin-top: -64px;
+      }
+
+      .key-panel {
+        padding: 18px;
+      }
+
+      .key-grid,
+      .feature-grid,
+      .project-grid,
+      .article-grid,
+      .mini-skills,
+      .case-summary,
+      .case-blocks,
+      .case-gallery,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card {
+        min-height: 170px;
+      }
+
+      .about-card,
+      .contact-card {
+        padding: 22px;
+      }
+
+      .about-photo {
+        min-height: 320px;
+      }
+
+      .modal {
+        padding: 12px;
+      }
+
+      .modal-head,
+      .modal-body {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="Châu Ngọc Huy"><span>CH</span></a>
+
+      <nav class="nav" id="mainNav" aria-label="Menu chính">
+        <a href="#home" class="active">Trang chủ</a>
+        <a href="#about">Về tôi</a>
+        <a href="#expertise">Năng lực</a>
+        <a href="#projects">Dự án</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a href="#playbook">Marketing Playbook</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary magnetic" href="./CV-Chau-Ngoc-Huy.pdf" download>⬇ Tải CV</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Mở menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge"><span class="dot"></span> Marketing Portfolio</div>
+          <p class="eyebrow" style="justify-content:flex-start">Xin chào, tôi là</p>
+          <h1><span>Châu Ngọc Huy</span></h1>
+          <div class="hero-subtitle">Senior Marketing Executive</div>
+          <p class="hero-desc">
+            Tôi xây dựng chiến lược nội dung, thương hiệu và chiến dịch tạo lead cho các lĩnh vực giáo dục, y tế, định cư quốc tế và B2B.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary magnetic" href="#projects">Xem dự án nổi bật →</a>
+            <a class="btn btn-outline magnetic" href="./CV-Chau-Ngoc-Huy.pdf" download>⬇ Tải CV</a>
+            <a class="btn btn-outline magnetic" href="#contact">✉ Liên hệ với tôi</a>
+          </div>
+
+          <div class="socials" aria-label="Mạng xã hội">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">in</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">f</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">▶</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">◎</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Mockup dự án và chân dung">
+          <div class="gold-orbit"></div>
+
+          <div class="mockup-stack">
+            <div class="mock-card">
+              <div class="mock-top"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+              <div class="mock-line mid"></div>
+              <div class="mock-line"></div>
+              <div class="mock-line short"></div>
+              <div class="mock-grid">
+                <div class="mock-thumb"></div>
+                <div class="mock-thumb"></div>
+                <div class="mock-thumb"></div>
+                <div class="mock-thumb"></div>
+              </div>
+            </div>
+            <div class="mock-card">
+              <div class="mock-top"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+              <div class="mock-line mid"></div>
+              <div class="mock-line"></div>
+              <div class="mock-grid">
+                <div class="mock-thumb"></div>
+                <div class="mock-thumb"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-person"></div>
+          <div class="hero-name-card">
+            <strong>Châu Ngọc Huy</strong>
+            <span>Growth · Content · Branding</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="key-wrap" aria-label="Số liệu nổi bật">
+      <div class="container">
+        <div class="key-panel">
+          <div class="key-grid" id="counterSection">
+            <article class="stat-card interactive" data-counter-type="range" data-from="150" data-to="200" data-final="150%–200%">
+              <div class="stat-icon">↗</div>
+              <strong class="stat-number">0%</strong>
+              <p>Tăng số lượng lead từ video campaign <b>Facebook Ads</b></p>
+            </article>
+
+            <article class="stat-card interactive" data-counter-type="single" data-to="300" data-suffix="% KPI" data-final="300% KPI">
+              <div class="stat-icon">◎</div>
+              <strong class="stat-number">0% KPI</strong>
+              <p>Doanh thu dự án vượt kế hoạch đầu năm</p>
+            </article>
+
+            <article class="stat-card interactive" data-counter-type="range" data-from="20" data-to="40" data-suffix="%/tháng" data-final="20%–40%/tháng">
+              <div class="stat-icon">♙</div>
+              <strong class="stat-number">0%/tháng</strong>
+              <p>Tăng trưởng lead chất lượng qua các tháng</p>
+            </article>
+
+            <article class="stat-card interactive" data-counter-type="plus" data-to="3" data-final="3+ lĩnh vực">
+              <div class="stat-icon">◎</div>
+              <strong class="stat-number">0+ lĩnh vực</strong>
+              <p><b>Education, Healthcare, Immigration, B2B</b></p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-card">
+          <div class="about-photo"></div>
+          <div class="about-content">
+            <span class="eyebrow">About me</span>
+            <h2>Về tôi</h2>
+            <p>
+              Tôi là một Marketing Executive có kinh nghiệm triển khai marketing trong các lĩnh vực cần tư vấn chuyên sâu như giáo dục, định cư quốc tế, chăm sóc sức khỏe và B2B. Thế mạnh của tôi nằm ở khả năng kết hợp giữa chiến lược nội dung, sản xuất hình ảnh/video, quảng cáo tạo lead, tổ chức sự kiện và phối hợp với các bộ phận Sales, Dự án, Marketing để đưa chiến dịch đi từ ý tưởng đến kết quả thực tế.
+            </p>
+            <p>
+              Trong các dự án đã tham gia, tôi tập trung vào việc hiểu hành trình khách hàng, xây dựng thông điệp phù hợp, triển khai nội dung đa nền tảng và đo lường hiệu quả dựa trên lead, chuyển đổi và doanh thu.
+            </p>
+
+            <div class="mini-skills">
+              <div class="mini-skill"><span>⚙</span><strong>Chiến lược nội dung</strong></div>
+              <div class="mini-skill"><span>♙</span><strong>Lead Generation</strong></div>
+              <div class="mini-skill"><span>▣</span><strong>Event Marketing</strong></div>
+              <div class="mini-skill"><span>◇</span><strong>Branding</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="expertise">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Core expertise</span>
+          <h2>Năng lực cốt lõi</h2>
+          <p>Nhóm năng lực được hệ thống hóa từ kinh nghiệm triển khai thực tế.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card interactive">
+            <div class="feature-icon">▤</div>
+            <h3>Content Strategy</h3>
+            <p>Content calendar, content đa nền tảng, thông điệp theo hành trình khách hàng.</p>
+          </article>
+
+          <article class="feature-card interactive">
+            <div class="feature-icon">↗</div>
+            <h3>Performance Marketing</h3>
+            <p>Facebook Ads, Google Ads, lead generation, theo dõi và tối ưu chiến dịch.</p>
+          </article>
+
+          <article class="feature-card interactive">
+            <div class="feature-icon">✺</div>
+            <h3>Branding & Creative</h3>
+            <p>Logo, nhận diện thương hiệu, brochure, catalogue, template hợp đồng, tài liệu bán hàng.</p>
+          </article>
+
+          <article class="feature-card interactive">
+            <div class="feature-icon">⌕</div>
+            <h3>SEO & Website</h3>
+            <p>Viết bài SEO, tối ưu website, chuẩn hóa nội dung sản phẩm, technical SEO cơ bản.</p>
+          </article>
+
+          <article class="feature-card interactive">
+            <div class="feature-icon">▧</div>
+            <h3>Event Marketing</h3>
+            <p>Hội thảo, workshop, setup sân khấu, gian hàng, standee, brochure, PPT, hậu kỳ sự kiện.</p>
+          </article>
+
+          <article class="feature-card interactive">
+            <div class="feature-icon">▻</div>
+            <h3>Video & Visual Production</h3>
+            <p>Quay phim, chụp ảnh, dựng video, thiết kế poster, tối ưu hình ảnh cho social và website.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Featured projects</span>
+          <h2>Dự án nổi bật</h2>
+          <p>Các case study thực tế tôi trực tiếp tham gia và triển khai. Click vào từng dự án để xem chi tiết.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card interactive" data-project="tiara" data-number="1">
+            <div class="project-logo">TIARA</div>
+            <h3>TIARA Healthcare Center</h3>
+            <div class="project-role">Senior Marketing Executive / Project Marketing Coordinator</div>
+            <p>Healthcare, Stem Cell, Special Children</p>
+            <ul>
+              <li>Xây dựng logo, nhận diện, brochure, template hợp đồng.</li>
+              <li>Xây dựng content calendar theo hành trình khách hàng.</li>
+              <li>Điều phối Ads, Content, Event, Sales và Project.</li>
+            </ul>
+            <div class="project-result">Lead chất lượng tăng 20%–40% | Doanh thu vượt KPI 300%</div>
+          </article>
+
+          <article class="project-card interactive" data-project="maple" data-number="2">
+            <div class="project-logo">MAPLE</div>
+            <h3>Maple Leaf Việt Nam</h3>
+            <div class="project-role">Senior Marketing Executive</div>
+            <p>Immigration / Education Consulting</p>
+            <ul>
+              <li>Viết content website, Facebook, Instagram, TikTok.</li>
+              <li>Sản xuất video, chụp ảnh, edit video cho content và hội thảo.</li>
+              <li>Hỗ trợ event khách sạn/văn phòng.</li>
+            </ul>
+            <div class="project-result">Video campaign tăng lead 150%–200%</div>
+          </article>
+
+          <article class="project-card interactive" data-project="rotman" data-number="3">
+            <div class="project-logo">ROTMAN</div>
+            <h3>Rotman Art & Science School</h3>
+            <div class="project-role">Event & Content Marketing</div>
+            <p>International Education</p>
+            <ul>
+              <li>Content tuyển sinh đa nền tảng.</li>
+              <li>Tổ chức event kết nối agency du học.</li>
+              <li>Điều phối hashtag, standee, brochure, PPT và báo cáo sau sự kiện.</li>
+            </ul>
+            <div class="project-result">Năng lực B2B partnership event</div>
+          </article>
+
+          <article class="project-card interactive" data-project="vass" data-number="4">
+            <div class="project-logo">VASS</div>
+            <h3>Việt Mỹ VASS</h3>
+            <div class="project-role">Marketing Specialist</div>
+            <p>Education / School System</p>
+            <ul>
+              <li>Quản trị mạng xã hội toàn hệ thống.</li>
+              <li>Content calendar theo tháng/năm.</li>
+              <li>Truyền tải key message mầm non qua Facebook Ads, Google.</li>
+            </ul>
+            <div class="project-result">Hiểu marketing giáo dục và hành vi phụ huynh</div>
+          </article>
+
+          <article class="project-card interactive" data-project="minhchau" data-number="5">
+            <div class="project-logo">MC</div>
+            <h3>Minh Châu Scientific Equipment</h3>
+            <div class="project-role">Marketing Executive</div>
+            <p>B2B / Scientific Equipment</p>
+            <ul>
+              <li>Content sản phẩm thiết bị phòng thí nghiệm.</li>
+              <li>SEO website, Email marketing, Google Ads.</li>
+              <li>Brochure, catalogue, hồ sơ năng lực và đo lường chỉ số.</li>
+            </ul>
+            <div class="project-result">Kinh nghiệm B2B và tối ưu kênh digital</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="timeline-wrap">
+          <div class="timeline-intro">
+            <span class="eyebrow" style="color:#E8D08A">Work journey</span>
+            <h2>Kinh nghiệm làm việc</h2>
+            <p>Quá trình phát triển từ triển khai nội dung, quản trị kênh digital đến điều phối dự án và định hướng marketing theo mục tiêu kinh doanh.</p>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="timeline-date">05/2025 - Nay</span>
+              <h3>Công ty TNHH Maple Leaf Việt Nam</h3>
+              <p><b>Senior Marketing Executive</b></p>
+              <ul>
+                <li>Tham gia marketing cho các dự án định cư, du học, giáo dục và chăm sóc sức khỏe.</li>
+                <li>Triển khai content đa nền tảng, quay/chụp/edit video, hỗ trợ hội thảo và báo cáo hiệu quả.</li>
+                <li>Điều phối hoạt động marketing, sales và dự án trong một số chiến dịch trọng điểm.</li>
+              </ul>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-date">10/2023 - 05/2025</span>
+              <h3>Hệ thống Trường Việt Mỹ VASS</h3>
+              <p><b>Marketing Specialist</b></p>
+              <ul>
+                <li>Quản trị social media toàn hệ thống trường học.</li>
+                <li>Xây dựng content calendar theo tháng/năm, triển khai key message, catalogue, brochure.</li>
+                <li>Nghiên cứu phụ huynh, chương trình giảng dạy, đối thủ và tổ chức sự kiện.</li>
+              </ul>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-date">11/2022 - 05/2025</span>
+              <h3>Công ty TNHH KHKT Minh Châu</h3>
+              <p><b>Marketing Executive</b></p>
+              <ul>
+                <li>Phát triển nội dung sản phẩm thiết bị phòng thí nghiệm và bài viết SEO.</li>
+                <li>Quản trị website/fanpage, Google Ads, Email Marketing và tài liệu bán hàng.</li>
+                <li>Đo lường traffic, tương tác, phản hồi email và tăng trưởng người theo dõi.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="playbook">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Marketing Playbook</span>
+          <h2>Chia sẻ kinh nghiệm, framework và tài nguyên thực chiến</h2>
+          <p>Một không gian để tôi hệ thống hóa kinh nghiệm, góc nhìn và tài liệu mẫu dành cho marketer.</p>
+        </div>
+
+        <div class="playbook-layout">
+          <div>
+            <div class="article-grid">
+              <article class="article-card interactive">
+                <div class="article-img" data-icon="▤"></div>
+                <div class="article-body">
+                  <span class="tag">Content Strategy</span>
+                  <h3>Cách xây dựng Content Calendar cho chiến dịch tạo lead</h3>
+                  <p>Hướng dẫn từng bước xây dựng content theo hành trình khách hàng và mục tiêu chuyển đổi.</p>
+                  <div class="article-meta"><span>8 phút đọc</span><span>12/05/2026</span></div>
+                </div>
+              </article>
+
+              <article class="article-card interactive">
+                <div class="article-img" data-icon="▣"></div>
+                <div class="article-body">
+                  <span class="tag">Event Marketing</span>
+                  <h3>Checklist tổ chức hội thảo tư vấn từ A-Z</h3>
+                  <p>Checklist đầy đủ giúp marketer chuẩn bị, điều phối và báo cáo sau sự kiện hiệu quả.</p>
+                  <div class="article-meta"><span>10 phút đọc</span><span>10/06/2026</span></div>
+                </div>
+              </article>
+
+              <article class="article-card interactive">
+                <div class="article-img" data-icon="♙"></div>
+                <div class="article-body">
+                  <span class="tag">Leadership</span>
+                  <h3>Cách phối hợp Marketing và Sales để không bỏ lỡ lead</h3>
+                  <p>Quy trình phối hợp giúp Marketing và Sales đi cùng một mục tiêu, dữ liệu và trách nhiệm.</p>
+                  <div class="article-meta"><span>7 phút đọc</span><span>05/06/2026</span></div>
+                </div>
+              </article>
+
+              <article class="article-card interactive">
+                <div class="article-img" data-icon="◎"></div>
+                <div class="article-body">
+                  <span class="tag">Career Growth</span>
+                  <h3>Một Marketing Executive cần chuẩn bị gì để trở thành Team Lead?</h3>
+                  <p>Tư duy, kỹ năng và mindset để bạn sẵn sàng cho vai trò dẫn dắt đội ngũ marketing.</p>
+                  <div class="article-meta"><span>9 phút đọc</span><span>01/06/2026</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <aside class="resources-panel" id="resources">
+            <h3>Tài nguyên & Template</h3>
+            <a href="./content-calendar-template.pdf" class="resource-card interactive" download>
+              <span class="file-icon">GS</span>
+              <span><strong>Content Calendar Template</strong><small>Google Sheets</small></span>
+              <span class="download-icon">↓</span>
+            </a>
+            <a href="./marketing-campaign-plan-template.pdf" class="resource-card interactive" download>
+              <span class="file-icon">PPT</span>
+              <span><strong>Marketing Campaign Plan Template</strong><small>PowerPoint</small></span>
+              <span class="download-icon">↓</span>
+            </a>
+            <a href="./event-checklist-template.pdf" class="resource-card interactive" download>
+              <span class="file-icon">PDF</span>
+              <span><strong>Event Checklist Template</strong><small>PDF</small></span>
+              <span class="download-icon">↓</span>
+            </a>
+            <a href="./monthly-report-template.xlsx" class="resource-card interactive" download>
+              <span class="file-icon">XLS</span>
+              <span><strong>Monthly Report Template</strong><small>Excel</small></span>
+              <span class="download-icon">↓</span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <span class="eyebrow" style="color:#E8D08A">Contact</span>
+            <h2>Liên hệ với tôi</h2>
+            <p>Tôi luôn sẵn sàng trao đổi về cơ hội hợp tác, dự án mới hoặc những ý tưởng thú vị trong marketing.</p>
+
+            <div class="contact-list">
+              <a class="contact-item" href="mailto:chaungochuy9@gmail.com"><span>✉</span> chaungochuy9@gmail.com</a>
+              <a class="contact-item" href="tel:0862567880"><span>☎</span> 0862 5678 80</a>
+              <div class="contact-item"><span>⌖</span> TP. Hồ Chí Minh, Việt Nam</div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <input class="form-control" name="name" placeholder="Họ và tên" required />
+              <input class="form-control" name="email" type="email" placeholder="Email" required />
+            </div>
+            <textarea class="form-control" name="message" placeholder="Nội dung tin nhắn" required></textarea>
+            <button class="btn btn-primary form-submit magnetic" type="submit">Gửi tin nhắn</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="#home"><span>CH</span></a>
+          <h3>Châu Ngọc Huy</h3>
+          <p><b>Senior Marketing Executive</b></p>
+          <p>Xây dựng chiến lược. Tạo giá trị. Dẫn dắt đội ngũ. Nâng tầm thương hiệu và doanh nghiệp.</p>
+        </div>
+        <div>
+          <strong>Liên kết nhanh</strong>
+          <div class="footer-links">
+            <a href="#about">Về tôi</a>
+            <a href="#projects">Dự án</a>
+            <a href="#experience">Kinh nghiệm</a>
+            <a href="#playbook">Marketing Playbook</a>
+          </div>
+        </div>
+        <div>
+          <strong>Kết nối</strong>
+          <div class="socials" style="margin-top:14px">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">in</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">f</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">▶</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">◎</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Châu Ngọc Huy. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <div>
+          <span class="eyebrow" id="modalEyebrow">Case study</span>
+          <h2 id="modalTitle">Tên dự án</h2>
+          <p id="modalSubtitle"></p>
+        </div>
+        <button class="modal-close" id="modalClose" aria-label="Đóng popup">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="case-hero">
+          <div class="case-visual" id="caseVisual" data-brand="CH">
+            <div class="case-grid-mini"><div class="case-mini"></div><div class="case-mini"></div><div class="case-mini"></div><div class="case-mini"></div></div>
+          </div>
+          <div class="case-summary" id="caseSummary"></div>
+        </div>
+
+        <div class="case-blocks" id="caseBlocks"></div>
+
+        <h3 style="margin-bottom:14px">Hình minh họa nên đưa vào portfolio</h3>
+        <div class="case-gallery" id="caseGallery"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Lên đầu trang">↑</button>
+  <div class="toast" id="toast">Đã thao tác</div>
+
+  <script>
+    const $ = (selector, parent = document) => parent.querySelector(selector);
+    const $$ = (selector, parent = document) => Array.from(parent.querySelectorAll(selector));
+
+    const header = $('#siteHeader');
+    const nav = $('#mainNav');
+    const menuBtn = $('#menuBtn');
+    const progress = $('#scrollProgress');
+    const backTop = $('#backTop');
+    const toast = $('#toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
+      progress.style.width = percent + '%';
+      header.classList.toggle('scrolled', scrolled > 20);
+      backTop.classList.toggle('show', scrolled > 620);
+    });
+
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      menuBtn.textContent = nav.classList.contains('open') ? '×' : '☰';
+    });
+
+    $$('.nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const sections = $$('section[id]');
+    const navLinks = $$('.nav a');
+    const activeNavObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+    sections.forEach(section => activeNavObserver.observe(section));
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animateCounter(card) {
+      if (card.dataset.done === 'true') return;
+      card.dataset.done = 'true';
+
+      const numberEl = $('.stat-number', card);
+      const type = card.dataset.counterType;
+      const duration = 1850;
+      const startTime = performance.now();
+
+      function render(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = easeOutCubic(progress);
+
+        if (type === 'range') {
+          const fromTarget = parseInt(card.dataset.from, 10);
+          const toTarget = parseInt(card.dataset.to, 10);
+          const fromValue = Math.round(fromTarget * eased);
+          const toValue = Math.round(toTarget * eased);
+          const suffix = card.dataset.suffix || '%';
+          if (card.dataset.final.includes('/tháng')) {
+            numberEl.textContent = `${fromValue}%–${toValue}%/tháng`;
+          } else {
+            numberEl.textContent = `${fromValue}%–${toValue}%`;
+          }
+        }
+
+        if (type === 'single') {
+          const toTarget = parseInt(card.dataset.to, 10);
+          numberEl.textContent = `${Math.round(toTarget * eased)}% KPI`;
+        }
+
+        if (type === 'plus') {
+          const toTarget = parseInt(card.dataset.to, 10);
+          numberEl.textContent = `${Math.round(toTarget * eased)}+ lĩnh vực`;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(render);
+        } else {
+          numberEl.textContent = card.dataset.final;
+        }
+      }
+
+      requestAnimationFrame(render);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          $$('.stat-card', entry.target).forEach((card, index) => {
+            setTimeout(() => animateCounter(card), index * 160);
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+    counterObserver.observe($('#counterSection'));
+
+    function addRipple(event) {
+      const target = event.currentTarget;
+      const rect = target.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.left = (event.clientX - rect.left) + 'px';
+      ripple.style.top = (event.clientY - rect.top) + 'px';
+      target.appendChild(ripple);
+      target.classList.add('is-clicked');
+      setTimeout(() => ripple.remove(), 620);
+      setTimeout(() => target.classList.remove('is-clicked'), 360);
+    }
+
+    $$('.btn, .interactive').forEach(el => el.addEventListener('click', addRipple));
+
+    $$('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', (event) => {
+        const rect = btn.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.06}px, ${y * 0.12}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    const projectData = {
+      tiara: {
+        title: 'TIARA Healthcare Center',
+        subtitle: 'Healthcare · Stem Cell · Special Children',
+        brand: 'TIARA',
+        summary: [
+          ['Vai trò', 'Senior Marketing Executive / Project Marketing Coordinator'],
+          ['Mục tiêu', 'Xây dựng thương hiệu, tạo lead chất lượng và hỗ trợ chuyển đổi'],
+          ['Kênh triển khai', 'Facebook Ads, Content, Event, Sales Kit, Website'],
+          ['Kết quả', 'Lead chất lượng tăng 20%–40% qua các tháng, doanh thu vượt KPI 300%']
+        ],
+        blocks: [
+          ['Tổng thể dự án', ['Xây dựng logo, bộ nhận diện thương hiệu, brochure, template hợp đồng, phiếu thông tin bệnh nhân.', 'Xác định mục tiêu lead, chuyển đổi và kế hoạch truyền thông theo tháng/quý.', 'Tạo hệ thống nội dung theo hành trình khách hàng.']],
+          ['Góc nhìn chiến lược', ['Dự án cần xây dựng niềm tin vì thuộc lĩnh vực chăm sóc sức khỏe và trẻ đặc biệt.', 'Nội dung cần vừa dễ hiểu cho phụ huynh, vừa giữ tính chuyên nghiệp và y khoa.', 'Marketing phải phối hợp chặt với Sales và đội dự án để không bỏ lỡ lead chất lượng.']],
+          ['Kết quả & bài học', ['Lead chất lượng tăng đều 20%–40% qua các tháng.', 'Doanh thu vượt KPI 300% so với kế hoạch đầu năm.', 'Bài học chính: dự án mới cần xây nền tảng thương hiệu, nội dung và quy trình chuyển đổi cùng lúc.']]
+        ],
+        gallery: [['✺', 'Logo & Brand Identity'], ['▤', 'Brochure / Sales Kit'], ['▧', 'Content Calendar'], ['↗', 'Lead & KPI Report']]
+      },
+      maple: {
+        title: 'Maple Leaf Việt Nam',
+        subtitle: 'Immigration · Education Consulting',
+        brand: 'MAPLE',
+        summary: [
+          ['Vai trò', 'Senior Marketing Executive'],
+          ['Mục tiêu', 'Tăng lead tư vấn định cư và du học qua nội dung đa nền tảng'],
+          ['Kênh triển khai', 'Website, Facebook, Instagram, TikTok, Event'],
+          ['Kết quả', 'Video campaign tăng lead 150%–200%']
+        ],
+        blocks: [
+          ['Tổng thể dự án', ['Viết content đa nền tảng về chương trình định cư Mỹ, Canada, Châu Âu.', 'Phụ trách setup, quay phim, chụp ảnh và edit video cho content và hội thảo.', 'Hỗ trợ sự kiện tại khách sạn và văn phòng.']],
+          ['Góc nhìn chiến lược', ['Ngành định cư cần thông điệp rõ ràng, đáng tin cậy và có tính cập nhật.', 'Video là kênh tạo niềm tin tốt vì giúp khách hàng thấy chuyên gia, sự kiện và quy trình thật.', 'Nội dung cần cân bằng giữa insight gia đình, tài chính và tương lai.']],
+          ['Kết quả & bài học', ['Video đạt hiệu quả tốt trong Facebook Ads.', 'Số lượng lead tăng từ 150%–200%.', 'Bài học chính: với dịch vụ tư vấn giá trị cao, nội dung cần tạo niềm tin trước khi thúc đẩy chuyển đổi.']]
+        ],
+        gallery: [['▻', 'Video Campaign'], ['▣', 'Event Photo'], ['▤', 'Seminar Poster'], ['↗', 'Lead Report']]
+      },
+      rotman: {
+        title: 'Rotman Art & Science School',
+        subtitle: 'International Education · B2B Partnership Event',
+        brand: 'ROTMAN',
+        summary: [
+          ['Vai trò', 'Event & Content Marketing'],
+          ['Mục tiêu', 'Kết nối agency tư vấn du học tại Việt Nam'],
+          ['Kênh triển khai', 'Content, Event, POSM, Brochure, PPT'],
+          ['Kết quả', 'Thể hiện năng lực tổ chức B2B partnership event']
+        ],
+        blocks: [
+          ['Tổng thể dự án', ['Viết content tuyển sinh đa nền tảng.', 'Tổ chức event hội thảo kết nối cùng agency du học.', 'Điều phối thiết kế in ấn hashtag, standee, brochure, PPT và báo cáo sau sự kiện.']],
+          ['Góc nhìn chiến lược', ['Sự kiện B2B cần thông điệp rõ, tài liệu tốt và quy trình đón tiếp chuyên nghiệp.', 'Agency cần thấy được giá trị chương trình học, năng lực trường và lợi ích hợp tác.', 'Mỗi điểm chạm tại event đều ảnh hưởng đến cảm nhận thương hiệu.']],
+          ['Kết quả & bài học', ['Tạo được trải nghiệm sự kiện chuyên nghiệp.', 'Có hệ thống tài liệu phục vụ bán hàng và hợp tác.', 'Bài học chính: B2B event cần chuẩn bị kỹ trước, trong và sau sự kiện để tạo chuyển đổi.']]
+        ],
+        gallery: [['▣', 'Agency Event'], ['▤', 'Brochure'], ['▧', 'PPT Deck'], ['◎', 'Post-event Report']]
+      },
+      vass: {
+        title: 'Hệ thống Trường Việt Mỹ VASS',
+        subtitle: 'Education · School System',
+        brand: 'VASS',
+        summary: [
+          ['Vai trò', 'Marketing Specialist'],
+          ['Mục tiêu', 'Phát triển thương hiệu, truyền tải chương trình và tạo lead phụ huynh'],
+          ['Kênh triển khai', 'Social Media, Facebook Ads, Google, Event, Catalogue'],
+          ['Kết quả', 'Xây dựng thông điệp “1 học phí 4 chương trình” và hiểu sâu insight phụ huynh']
+        ],
+        blocks: [
+          ['Tổng thể dự án', ['Quản trị mạng xã hội toàn hệ thống trường học.', 'Lên content calendar theo tháng/năm.', 'Biên soạn catalogue, brochure, slogan, tagline và tổ chức sự kiện.']],
+          ['Góc nhìn chiến lược', ['Marketing giáo dục không chỉ bán chương trình, mà cần giải quyết nỗi lo của phụ huynh.', 'Thông điệp cần rõ ràng, nhất quán và dễ nhớ.', 'Nội dung phải phản ánh được môi trường học, hoạt động học sinh và giá trị đào tạo.']],
+          ['Kết quả & bài học', ['Phụ huynh biết đến VASS với thông điệp “1 học phí 4 chương trình”.', 'Tăng tính nhất quán trong truyền thông mầm non.', 'Bài học chính: insight phụ huynh là nền tảng của content marketing ngành giáo dục.']]
+        ],
+        gallery: [['▤', 'Catalogue'], ['▣', 'School Event'], ['▻', 'Video / Photo'], ['⌕', 'Market Research']]
+      },
+      minhchau: {
+        title: 'Minh Châu Scientific Equipment',
+        subtitle: 'B2B · Scientific Equipment',
+        brand: 'MC',
+        summary: [
+          ['Vai trò', 'Marketing Executive'],
+          ['Mục tiêu', 'Phát triển thông tin sản phẩm, SEO, quảng cáo và tài liệu bán hàng'],
+          ['Kênh triển khai', 'Website, SEO, Google Ads, Email Marketing, Fanpage'],
+          ['Kết quả', 'Thể hiện khả năng làm B2B marketing và tối ưu kênh digital']
+        ],
+        blocks: [
+          ['Tổng thể dự án', ['Lập kế hoạch và sáng tạo nội dung thiết bị phòng thí nghiệm.', 'Viết bài chuẩn SEO, tối ưu website và hình ảnh sản phẩm.', 'Thiết kế brochure, catalogue, hồ sơ năng lực và triển khai email marketing.']],
+          ['Góc nhìn chiến lược', ['B2B cần thông tin sản phẩm chính xác, rõ ràng và dễ hỗ trợ sales.', 'SEO và website đóng vai trò quan trọng trong tạo niềm tin và nhu cầu tìm kiếm.', 'Tài liệu bán hàng cần giúp khách hàng hiểu nhanh về năng lực và danh mục sản phẩm.']],
+          ['Kết quả & bài học', ['Quản lý và tối ưu website/fanpage.', 'Theo dõi traffic, tương tác, phản hồi email và follower mới.', 'Bài học chính: B2B marketing cần kiên trì, dữ liệu và tài liệu bán hàng tốt.']]
+        ],
+        gallery: [['⌕', 'SEO Content'], ['▤', 'Catalogue'], ['✉', 'Email Marketing'], ['◎', 'Performance Report']]
+      }
+    };
+
+    const modal = $('#projectModal');
+    const modalClose = $('#modalClose');
+
+    function openProjectModal(key) {
+      const data = projectData[key];
+      if (!data) return;
+
+      $('#modalTitle').textContent = data.title;
+      $('#modalSubtitle').textContent = data.subtitle;
+      $('#caseVisual').dataset.brand = data.brand;
+
+      $('#caseSummary').innerHTML = data.summary.map(([label, value]) => `
+        <div class="case-summary-card"><strong>${label}</strong><p>${value}</p></div>
+      `).join('');
+
+      $('#caseBlocks').innerHTML = data.blocks.map(([title, items]) => `
+        <article class="case-block">
+          <h3>${title}</h3>
+          <ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>
+        </article>
+      `).join('');
+
+      $('#caseGallery').innerHTML = data.gallery.map(([icon, title]) => `
+        <div class="gallery-card interactive">
+          <div class="gallery-icon">${icon}</div>
+          <strong>${title}</strong>
+        </div>
+      `).join('');
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    $$('.project-card').forEach(card => {
+      card.addEventListener('click', () => openProjectModal(card.dataset.project));
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    $('#contactForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const name = encodeURIComponent(form.name.value.trim());
+      const email = encodeURIComponent(form.email.value.trim());
+      const message = encodeURIComponent(form.message.value.trim());
+      const subject = encodeURIComponent('Liên hệ từ website portfolio');
+      const body = encodeURIComponent(`Họ tên: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\n\nNội dung:\n${decodeURIComponent(message)}`);
+      window.location.href = `mailto:chaungochuy9@gmail.com?subject=${subject}&body=${body}`;
+      showToast('Đang mở ứng dụng email của bạn');
+      form.reset();
+    });
+
+    $$('a[download]').forEach(link => {
+      link.addEventListener('click', () => {
+        const fileName = link.getAttribute('href').replace('./', '');
+        showToast('Đang tải: ' + fileName);
+      });
+    });
+  </script>
+</body>
+</html>
