@@ -1,0 +1,29 @@
+<svg width="940" height="740" viewBox="0 0 940 740" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DDE8F8"/>
+    </linearGradient>
+    <filter id="s" x="-30" y="-30" width="1000" height="800" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="28" stdDeviation="22" flood-color="#001735" flood-opacity=".3"/>
+    </filter>
+  </defs>
+  <rect x="42" y="110" width="520" height="390" rx="26" fill="url(#g)" filter="url(#s)"/>
+  <rect x="76" y="150" width="160" height="22" rx="11" fill="#D9A441"/>
+  <rect x="76" y="196" width="418" height="18" rx="9" fill="#102A43" opacity=".18"/>
+  <rect x="76" y="234" width="372" height="18" rx="9" fill="#102A43" opacity=".12"/>
+  <rect x="76" y="286" width="178" height="132" rx="18" fill="#15467A" opacity=".94"/>
+  <rect x="280" y="286" width="178" height="132" rx="18" fill="#E8B957" opacity=".95"/>
+  <text x="118" y="361" font-family="Arial" font-size="28" fill="#fff" font-weight="700">BLOG</text>
+  <text x="322" y="361" font-family="Arial" font-size="28" fill="#08213D" font-weight="700">PLAN</text>
+  <rect x="340" y="24" width="360" height="244" rx="24" fill="#fff" filter="url(#s)" transform="rotate(7 340 24)"/>
+  <rect x="373" y="75" width="240" height="18" rx="9" fill="#15467A" opacity=".92" transform="rotate(7 373 75)"/>
+  <rect x="370" y="116" width="276" height="14" rx="7" fill="#102A43" opacity=".16" transform="rotate(7 370 116)"/>
+  <rect x="367" y="151" width="210" height="14" rx="7" fill="#102A43" opacity=".14" transform="rotate(7 367 151)"/>
+  <rect x="600" y="330" width="250" height="340" rx="28" fill="#061C36" filter="url(#s)" transform="rotate(-7 600 330)"/>
+  <text x="680" y="475" font-family="Arial" font-size="68" fill="#D9A441" font-weight="700" transform="rotate(-7 680 475)">CH</text>
+  <rect x="116" y="480" width="330" height="200" rx="24" fill="#fff" filter="url(#s)" transform="rotate(-5 116 480)"/>
+  <circle cx="284" cy="580" r="42" fill="#D9A441" transform="rotate(-5 284 580)"/>
+  <path d="M273 561l38 22-38 22v-44Z" fill="#fff"/>
+  <rect x="154" y="634" width="178" height="12" rx="6" fill="#102A43" opacity=".18" transform="rotate(-5 154 634)"/>
+</svg>

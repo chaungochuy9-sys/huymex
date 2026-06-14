@@ -1,0 +1,7 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="1100" rx="56" fill="#EEF2F7"/>
+  <circle cx="450" cy="250" r="132" fill="#D8DEE9"/>
+  <path d="M214 771c37-190 161-294 236-294s199 104 236 294c9 46-25 89-72 89H286c-47 0-81-43-72-89Z" fill="#102A43"/>
+  <path d="M312 860h276l-58 158H370l-58-158Z" fill="#D9A441" opacity=".85"/>
+  <text x="450" y="1015" font-family="Arial, sans-serif" font-size="42" fill="#102A43" text-anchor="middle" font-weight="700">Ảnh chân dung</text>
+</svg>
