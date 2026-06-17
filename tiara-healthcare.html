@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TIARA Healthcare Center | Case Study - Châu Ngọc Huy</title>
+  <meta name="description" content="Case study dự án TIARA Healthcare Center - Healthcare Marketing, Brand Building, Content System, Lead Generation và Event Marketing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #FAF7F0;
+      --bg-white: #FFFFFF;
+      --bg-cream: #FFFDF8;
+      --text-main: #171717;
+      --text-soft: #706A5E;
+      --text-muted: #928A7A;
+      --gold-primary: #C9A24D;
+      --gold-light: #F5E1A5;
+      --gold-deep: #8A6426;
+      --charcoal: #171717;
+      --charcoal-2: #24211C;
+      --border-soft: #E8E0D2;
+      --border-gold: rgba(201, 162, 77, .38);
+      --gradient-gold: linear-gradient(135deg, #FFF2C7 0%, #D7B35C 46%, #8A6426 100%);
+      --gradient-dark: linear-gradient(135deg, #171717 0%, #2A2418 55%, #C9A24D 100%);
+      --gradient-light: radial-gradient(circle at 12% 0%, rgba(247, 225, 165, .65), transparent 30%), linear-gradient(135deg, #FFFFFF 0%, #FAF7F0 55%, #F3E4C4 100%);
+      --shadow-soft: 0 24px 80px rgba(23, 23, 23, .08);
+      --shadow-card: 0 18px 50px rgba(23, 23, 23, .08);
+      --shadow-gold: 0 18px 44px rgba(201, 162, 77, .22);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at top left, rgba(245, 225, 165, .35), transparent 24%),
+        linear-gradient(180deg, #fff 0%, var(--bg-main) 44%, #fff 100%);
+      overflow-x: hidden;
+    }
+    body.modal-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      z-index: 0;
+      background-image:
+        radial-gradient(rgba(201, 162, 77, .18) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.7), transparent 65%);
+    }
+
+    .container { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; position: relative; z-index: 1; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, .75);
+      border-bottom: 1px solid rgba(232, 224, 210, .75);
+    }
+    .nav-inner {
+      width: min(1240px, calc(100% - 36px));
+      margin: 0 auto;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+    .brand-mark {
+      width: 46px; height: 46px;
+      border-radius: 16px;
+      background: var(--gradient-dark);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-gold);
+      font-size: 18px;
+    }
+    .brand small { display: block; color: var(--text-soft); font-size: 12px; letter-spacing: 0; font-weight: 600; margin-top: 3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--text-soft); font-size: 14px; font-weight: 700; }
+    .nav-links a { position: relative; padding: 10px 0; }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: 4px; width: 0; height: 2px;
+      background: var(--gradient-gold); transition: .25s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--gradient-gold); color: #171717; box-shadow: var(--shadow-gold); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 26px 58px rgba(201, 162, 77, .3); }
+    .btn-ghost { background: rgba(255,255,255,.72); color: var(--text-main); border-color: var(--border-soft); }
+    .btn-ghost:hover { transform: translateY(-3px); border-color: var(--border-gold); box-shadow: var(--shadow-card); }
+
+    .hero {
+      padding: 74px 0 48px;
+      position: relative;
+    }
+    .hero-card {
+      min-height: 560px;
+      border-radius: 44px;
+      background:
+        radial-gradient(circle at 78% 12%, rgba(255, 242, 199, .9), transparent 26%),
+        linear-gradient(135deg, #fff 0%, #FAF7F0 47%, #F2E2BD 100%);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: stretch;
+    }
+    .hero-copy { padding: 64px 58px; display: flex; flex-direction: column; justify-content: center; }
+    .eyebrow { color: var(--gold-deep); font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 18px; }
+    h1 { font-size: clamp(44px, 5vw, 76px); line-height: .98; letter-spacing: -.08em; margin: 0 0 20px; }
+    .hero h1 span {
+      background: linear-gradient(135deg, #171717 0%, #4b3a16 50%, #C9A24D 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-desc { font-size: 18px; line-height: 1.8; color: var(--text-soft); max-width: 640px; margin: 0 0 28px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 34px; max-width: 620px; }
+    .meta-pill {
+      border: 1px solid var(--border-soft); background: rgba(255,255,255,.7);
+      border-radius: 20px; padding: 14px; box-shadow: 0 12px 34px rgba(23,23,23,.05);
+    }
+    .meta-pill strong { display: block; font-size: 18px; margin-bottom: 5px; }
+    .meta-pill span { color: var(--text-soft); font-size: 12px; line-height: 1.45; font-weight: 600; }
+
+    .hero-visual { position: relative; min-height: 560px; padding: 36px 36px 36px 0; display: flex; align-items: center; }
+    .browser-mockup {
+      width: 100%; height: 420px; border-radius: 30px; background: #fff; border: 1px solid var(--border-soft);
+      box-shadow: 0 34px 90px rgba(23,23,23,.12); overflow: hidden; transform: rotate(-2deg);
+    }
+    .browser-top { height: 52px; background: linear-gradient(180deg, #fff, #F8F2E5); border-bottom: 1px solid var(--border-soft); display: flex; align-items: center; gap: 8px; padding: 0 18px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #D7B35C; opacity: .7; }
+    .mock-body { padding: 22px; display: grid; grid-template-columns: .85fr 1.15fr; gap: 18px; height: calc(100% - 52px); }
+    .mock-cover { border-radius: 22px; background: var(--gradient-dark); display: grid; place-items: center; color: #fff; font-weight: 900; text-align: center; padding: 24px; }
+    .mock-lines { display: grid; gap: 12px; align-content: start; }
+    .mock-line { height: 14px; border-radius: 99px; background: #EEE4D2; }
+    .mock-line:nth-child(1) { width: 78%; height: 26px; background: linear-gradient(90deg, #171717, #C9A24D); }
+    .mock-line:nth-child(2) { width: 94%; }
+    .mock-line:nth-child(3) { width: 70%; }
+    .mock-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px; }
+    .mock-thumb { height: 84px; border-radius: 18px; background: var(--gradient-light); border: 1px solid var(--border-soft); display: grid; place-items: center; font-weight: 800; color: var(--gold-deep); }
+    .floating-card {
+      position: absolute; right: 24px; bottom: 54px; width: 225px; border-radius: 24px; padding: 18px;
+      background: rgba(23, 23, 23, .92); color: #fff; box-shadow: 0 28px 74px rgba(23,23,23,.22);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .floating-card strong { display: block; font-size: 26px; background: var(--gradient-gold); -webkit-background-clip: text; color: transparent; }
+    .floating-card span { color: rgba(255,255,255,.76); font-size: 12px; line-height: 1.5; }
+
+    section { padding: 66px 0; }
+    .section-head { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+    .section-kicker { color: var(--gold-deep); font-weight: 900; letter-spacing: .1em; text-transform: uppercase; font-size: 12px; margin-bottom: 12px; }
+    .section-title { font-size: clamp(30px, 3vw, 48px); line-height: 1.12; margin: 0 0 14px; letter-spacing: -.05em; }
+    .section-desc { color: var(--text-soft); line-height: 1.8; margin: 0; }
+
+    .panel {
+      background: rgba(255,255,255,.78); border: 1px solid var(--border-soft); border-radius: var(--radius-xl); box-shadow: var(--shadow-soft); overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .overview-card {
+      background: rgba(255,255,255,.8); border: 1px solid var(--border-soft); border-radius: 28px; padding: 24px;
+      box-shadow: var(--shadow-card); transition: .25s ease;
+    }
+    .overview-card:hover { transform: translateY(-6px); border-color: var(--border-gold); }
+    .overview-card .icon { width: 48px; height: 48px; border-radius: 18px; display: grid; place-items: center; background: #FFF4D8; color: var(--gold-deep); margin-bottom: 18px; font-weight: 900; }
+    .overview-card strong { display: block; font-size: 16px; margin-bottom: 8px; }
+    .overview-card span { color: var(--text-soft); font-size: 13px; line-height: 1.6; font-weight: 600; }
+
+    .challenge-panel {
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 44px;
+      align-items: start;
+      position: relative;
+    }
+    .challenge-side { position: sticky; top: 106px; }
+    .challenge-badge {
+      background: var(--gradient-dark); color: #fff; border-radius: 26px; padding: 30px;
+      box-shadow: 0 24px 58px rgba(23,23,23,.18); border: 1px solid rgba(255,255,255,.1);
+    }
+    .challenge-badge h2 { margin: 0 0 12px; font-size: 26px; letter-spacing: -.05em; }
+    .challenge-badge p { color: rgba(255,255,255,.75); line-height: 1.7; margin: 0; font-size: 14px; }
+    .challenge-badge .gold-line { width: 70px; height: 4px; border-radius: 99px; background: var(--gradient-gold); margin: 22px 0; }
+    .challenge-content { display: grid; gap: 18px; }
+    .challenge-content p {
+      margin: 0; color: var(--text-soft); line-height: 1.86; font-size: 15px;
+      padding: 20px 22px; background: rgba(250, 247, 240, .74); border: 1px solid rgba(232,224,210,.72); border-radius: 22px;
+    }
+    .challenge-content p:first-child { color: var(--text-main); font-weight: 600; background: #fff; }
+
+    .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .role-card {
+      background: rgba(255,255,255,.84); border: 1px solid var(--border-soft); border-radius: 28px; padding: 28px;
+      min-height: 270px; position: relative; overflow: hidden; box-shadow: var(--shadow-card); transition: .28s ease;
+    }
+    .role-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 5px; background: var(--gradient-gold); opacity: .86; }
+    .role-card:hover { transform: translateY(-8px); border-color: var(--border-gold); box-shadow: 0 30px 70px rgba(23,23,23,.12); }
+    .role-num { color: var(--gold-deep); font-weight: 900; font-size: 13px; letter-spacing: .08em; margin-bottom: 14px; display: block; }
+    .role-card h3 { font-size: 20px; margin: 0 0 12px; letter-spacing: -.04em; }
+    .role-card p { color: var(--text-soft); line-height: 1.7; margin: 0; font-size: 14px; }
+
+    .approach-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+    .approach-card {
+      padding: 30px; border-radius: 30px; background: #fff; border: 1px solid var(--border-soft); box-shadow: var(--shadow-card); transition: .28s ease;
+    }
+    .approach-card:hover { transform: translateY(-6px); border-color: var(--border-gold); }
+    .approach-card h3 { margin: 0 0 12px; font-size: 22px; letter-spacing: -.04em; }
+    .approach-card p { color: var(--text-soft); line-height: 1.75; margin: 0; }
+    .approach-card.dark { background: var(--gradient-dark); color: #fff; }
+    .approach-card.dark p { color: rgba(255,255,255,.78); }
+
+    .deliverable-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .deliverable-card {
+      background: rgba(255,255,255,.86); border: 1px solid var(--border-soft); border-radius: 30px; padding: 24px; box-shadow: var(--shadow-card);
+      transition: .28s ease; cursor: pointer; min-height: 315px; display: flex; flex-direction: column;
+    }
+    .deliverable-card:hover { transform: translateY(-8px); border-color: var(--border-gold); box-shadow: 0 30px 70px rgba(23,23,23,.12); }
+    .deliverable-card:active { transform: translateY(-3px) scale(.99); }
+    .thumb-placeholder {
+      height: 150px; border-radius: 22px; background: var(--gradient-light); border: 1px dashed rgba(201,162,77,.42);
+      display: grid; place-items: center; color: var(--gold-deep); font-weight: 900; margin-bottom: 18px; position: relative; overflow: hidden;
+    }
+    .thumb-placeholder::after { content: ''; position: absolute; inset: auto -20% -45% -20%; height: 90px; background: rgba(255,255,255,.55); filter: blur(18px); transform: rotate(-8deg); }
+    .deliverable-card h3 { margin: 0 0 10px; font-size: 20px; letter-spacing: -.04em; }
+    .deliverable-card p { margin: 0 0 18px; color: var(--text-soft); line-height: 1.65; font-size: 14px; flex: 1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: 11px; font-weight: 800; color: var(--gold-deep); background: #FFF4D8; border: 1px solid rgba(201,162,77,.22); border-radius: 999px; padding: 7px 10px; }
+
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .result-card { padding: 30px; border-radius: 30px; background: #fff; border: 1px solid var(--border-soft); box-shadow: var(--shadow-card); }
+    .result-card strong { display: block; font-size: 34px; letter-spacing: -.06em; background: linear-gradient(135deg, #C9A24D, #8A6426); -webkit-background-clip: text; color: transparent; margin-bottom: 8px; }
+    .result-card span { color: var(--text-soft); line-height: 1.6; font-weight: 600; }
+
+    .learning-list { display: grid; gap: 16px; max-width: 950px; margin: 0 auto; }
+    .learning-item { display: grid; grid-template-columns: 64px 1fr; gap: 18px; align-items: start; padding: 24px; border: 1px solid var(--border-soft); border-radius: 28px; background: rgba(255,255,255,.86); box-shadow: 0 14px 36px rgba(23,23,23,.05); }
+    .learning-item .num { width: 52px; height: 52px; border-radius: 18px; background: var(--gradient-gold); display: grid; place-items: center; font-weight: 900; }
+    .learning-item h3 { margin: 0 0 8px; font-size: 20px; }
+    .learning-item p { margin: 0; color: var(--text-soft); line-height: 1.72; }
+
+    .cta-panel {
+      padding: 46px; border-radius: 38px; background: var(--gradient-dark); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      box-shadow: 0 30px 80px rgba(23,23,23,.18); overflow: hidden; position: relative;
+    }
+    .cta-panel::before { content: ''; position: absolute; width: 340px; height: 340px; border-radius: 50%; right: -140px; top: -140px; background: rgba(201,162,77,.28); filter: blur(10px); }
+    .cta-panel h2 { margin: 0 0 10px; font-size: clamp(28px, 3vw, 42px); letter-spacing: -.06em; position: relative; }
+    .cta-panel p { margin: 0; color: rgba(255,255,255,.76); line-height: 1.7; position: relative; }
+    .cta-panel .btn { position: relative; }
+
+    footer { padding: 36px 0 54px; color: var(--text-soft); text-align: center; font-size: 13px; }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(23,23,23,.64); backdrop-filter: blur(12px); z-index: 200;
+      display: none; align-items: center; justify-content: center; padding: 22px;
+    }
+    .modal-backdrop.active { display: flex; animation: fadeIn .2s ease both; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal {
+      width: min(1120px, 100%); max-height: min(88vh, 900px); overflow: hidden; border-radius: 36px; background: #fff;
+      box-shadow: 0 40px 120px rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.2); display: grid; grid-template-rows: auto 1fr;
+      transform: translateY(12px) scale(.98); animation: modalIn .25s ease both;
+    }
+    @keyframes modalIn { to { transform: translateY(0) scale(1); } }
+    .modal-head { padding: 24px 28px; border-bottom: 1px solid var(--border-soft); display: flex; justify-content: space-between; gap: 18px; align-items: start; background: linear-gradient(135deg, #fff, #FAF7F0); }
+    .modal-title h2 { margin: 0 0 8px; font-size: clamp(26px, 3vw, 40px); letter-spacing: -.06em; }
+    .modal-title p { margin: 0; color: var(--text-soft); line-height: 1.6; max-width: 760px; }
+    .modal-close { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-soft); background: #fff; font-size: 22px; cursor: pointer; transition: .2s ease; flex: 0 0 auto; }
+    .modal-close:hover { transform: rotate(90deg); border-color: var(--border-gold); }
+    .modal-body { padding: 28px; overflow: auto; }
+    .modal-layout { display: block; }
+    .modal-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .gallery-item { border: 1px solid var(--border-soft); border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 14px 36px rgba(23,23,23,.06); }
+    .image-slot { height: 210px; background: var(--gradient-light); display: grid; place-items: center; color: var(--gold-deep); font-weight: 900; border-bottom: 1px solid var(--border-soft); text-align: center; padding: 20px; }
+    .gallery-item img { width: 100%; height: 210px; object-fit: cover; }
+    .gallery-caption { padding: 16px; }
+    .gallery-caption strong { display: block; margin-bottom: 6px; }
+    .gallery-caption span { color: var(--text-soft); font-size: 13px; line-height: 1.55; }
+    .modal-note { margin-top: 18px; padding: 18px; border-radius: 20px; background: #FFF4D8; color: #6d501f; font-size: 13px; line-height: 1.65; border: 1px solid rgba(201,162,77,.25); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .hero-card { grid-template-columns: 1fr; }
+      .hero-copy { padding: 48px 30px; }
+      .hero-visual { min-height: auto; padding: 0 30px 40px; }
+      .hero-meta, .overview-grid, .role-grid, .deliverable-grid, .results-grid { grid-template-columns: 1fr 1fr; }
+      .challenge-panel { grid-template-columns: 1fr; padding: 26px; }
+      .challenge-side { position: relative; top: auto; }
+      .approach-wrap { grid-template-columns: 1fr; }
+      .cta-panel { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 26px, var(--max)); }
+      .nav-inner { width: calc(100% - 24px); }
+      .brand-text { display: none; }
+      .hero { padding-top: 30px; }
+      .hero-card { border-radius: 30px; }
+      .hero-copy { padding: 38px 22px; }
+      .hero-meta, .overview-grid, .role-grid, .deliverable-grid, .results-grid, .modal-gallery { grid-template-columns: 1fr; }
+      .browser-mockup { height: 320px; }
+      .floating-card { position: relative; right: auto; bottom: auto; width: 100%; margin-top: 16px; }
+      section { padding: 44px 0; }
+      .challenge-panel, .cta-panel { padding: 22px; border-radius: 28px; }
+      .modal { border-radius: 26px; max-height: 92vh; }
+      .modal-head, .modal-body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html" aria-label="Quay lại trang chủ">
+        <span class="brand-mark">CH</span>
+        <span class="brand-text">Châu Ngọc Huy <small>Senior Marketing Executive</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#overview">Tổng quan</a>
+        <a href="#challenge">Bối cảnh</a>
+        <a href="#role">Vai trò</a>
+        <a href="#deliverables">Hạng mục</a>
+        <a href="#results">Kết quả</a>
+      </div>
+      <a class="btn btn-ghost" href="./index.html">← Portfolio</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card reveal">
+        <div class="hero-copy">
+          <div class="eyebrow">Healthcare Marketing Case Study</div>
+          <h1>TIARA <span>Healthcare Center</span></h1>
+          <p class="hero-desc">Một dự án xây dựng thương hiệu healthcare mới từ nền tảng nhận diện, hệ thống nội dung, tài liệu tư vấn, chiến dịch tạo lead đến quy trình phối hợp Marketing – Sales – Dự án.</p>
+          <div class="hero-actions">
+            <a href="#deliverables" class="btn btn-primary">Xem hạng mục triển khai</a>
+            <a href="#challenge" class="btn btn-ghost">Đọc bối cảnh dự án</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-pill"><strong>Role</strong><span>Senior Marketing Executive / Project Marketing Coordinator</span></div>
+            <div class="meta-pill"><strong>Scope</strong><span>Branding · Content · Lead Gen · Event · Team Workflow</span></div>
+            <div class="meta-pill"><strong>Focus</strong><span>Healthcare service in premium consulting segment</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div style="width:100%">
+            <div class="browser-mockup">
+              <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="mock-body">
+                <div class="mock-cover">TIARA<br>CASE<br>STUDY</div>
+                <div class="mock-lines">
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-grid">
+                    <div class="mock-thumb">LOGO</div>
+                    <div class="mock-thumb">WEB</div>
+                    <div class="mock-thumb">ADS</div>
+                    <div class="mock-thumb">EVENT</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="floating-card"><strong>300% KPI</strong><span>Doanh thu vượt kế hoạch đầu năm. Có thể ẩn/làm tròn số liệu nếu cần bảo mật.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Project Overview</div>
+          <h2 class="section-title">Một case study về xây dựng hệ thống marketing cho thương hiệu healthcare mới</h2>
+          <p class="section-desc">Dự án đòi hỏi sự kết hợp giữa tư duy chiến lược, truyền thông y tế thận trọng, xây dựng niềm tin, visual premium và khả năng phối hợp đa phòng ban.</p>
+        </div>
+        <div class="overview-grid reveal">
+          <div class="overview-card"><div class="icon">01</div><strong>Brand Building</strong><span>Xây dựng nhận diện, tài liệu tư vấn và hệ thống visual đồng bộ.</span></div>
+          <div class="overview-card"><div class="icon">02</div><strong>Content System</strong><span>Phát triển tuyến nội dung theo hành trình khách hàng và nhóm nhu cầu.</span></div>
+          <div class="overview-card"><div class="icon">03</div><strong>Lead Generation</strong><span>Định hướng chiến dịch tạo lead, theo dõi chất lượng và tối ưu thông điệp.</span></div>
+          <div class="overview-card"><div class="icon">04</div><strong>Team Workflow</strong><span>Phối hợp Sales, Dự án và Marketing để đồng bộ quy trình xử lý lead.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="challenge">
+      <div class="container">
+        <div class="challenge-panel panel reveal">
+          <aside class="challenge-side">
+            <div class="challenge-badge">
+              <h2>Bối cảnh & Challenge</h2>
+              <div class="gold-line"></div>
+              <p>Dịch vụ y tế chuyên sâu, thương hiệu mới, sản phẩm cao cấp và hành trình ra quyết định cần niềm tin.</p>
+            </div>
+          </aside>
+          <div class="challenge-content">
+            <p>TIARA Healthcare Center là một thương hiệu hoàn toàn mới tại Việt Nam, hoạt động trong lĩnh vực tư vấn và kết nối khách hàng với các liệu pháp y học tái tạo, trong đó có liệu pháp tế bào gốc cuống rốn. Do các liệu pháp liên quan đến tế bào gốc cho trẻ đặc biệt, trẻ tự kỷ và một số nhóm bệnh lý chuyên sâu chưa được triển khai rộng rãi tại Việt Nam về mặt pháp lý và thực hành điều trị, TIARA không định vị là đơn vị trực tiếp thực hiện liệu pháp, mà đóng vai trò kết nối tư vấn, đánh giá hồ sơ và đồng hành cùng khách hàng trong hành trình thực hiện tại bệnh viện đối tác ở Malaysia.</p>
+            <p>Thách thức lớn nhất của dự án nằm ở việc truyền thông một dịch vụ y tế chuyên sâu, có giá trị cao và đòi hỏi mức độ tin tưởng lớn từ khách hàng. Phần lớn khách hàng mục tiêu đã từng nghe đến liệu pháp tế bào gốc, nhưng vẫn còn nhiều băn khoăn về tính hiệu quả, mức độ an toàn, chi phí, quy trình thực hiện và kỳ vọng kết quả sau liệu pháp.</p>
+            <p>Ngoài ra, đây là nhóm sản phẩm/dịch vụ khó tạo nội dung viral theo cách thông thường vì liên quan đến y tế chuyên sâu, tính cá nhân cao và cần sự thận trọng trong cách truyền tải thông tin. Với nhóm khách hàng đã có nhu cầu rõ ràng, các yếu tố như chi phí, quy trình, hiệu quả tham khảo và mức độ cam kết là những điểm tác động trực tiếp đến quyết định tư vấn.</p>
+            <p>Trong giai đoạn đầu, TIARA cần xây dựng gần như toàn bộ nền tảng marketing từ đầu: hệ thống nhận diện thương hiệu, content calendar, tài liệu tư vấn, tuyến nội dung theo hành trình khách hàng, kịch bản chào hàng, quy trình xử lý lead và cơ chế phối hợp giữa Marketing – Sales – Dự án.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="role">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">My Role</div>
+          <h2 class="section-title">Vai trò của tôi trong dự án</h2>
+          <p class="section-desc">Tôi tham gia với vai trò Senior Marketing Executive / Project Marketing Coordinator, phụ trách nhiều hạng mục từ chiến lược đến triển khai.</p>
+        </div>
+        <div class="role-grid reveal">
+          <div class="role-card"><span class="role-num">01 · STRATEGY</span><h3>Marketing Strategy</h3><p>Xác định mục tiêu marketing theo tháng/quý, định hướng content theo hành trình khách hàng, đề xuất thông điệp theo từng nhóm đối tượng và phân bổ ngân sách Ads – Content – Event.</p></div>
+          <div class="role-card"><span class="role-num">02 · BRAND</span><h3>Branding & Materials</h3><p>Tham gia xây dựng logo, nhận diện thương hiệu, brochure, template hợp đồng, phụ lục, phiếu thông tin bệnh nhân và các ấn phẩm tư vấn/sự kiện.</p></div>
+          <div class="role-card"><span class="role-num">03 · CONTENT</span><h3>Content & Campaign</h3><p>Xây dựng content calendar, viết content Facebook, website, landing page, video script và phát triển tuyến nội dung theo nhóm nhận biết, giáo dục, niềm tin, case study, chuyển đổi.</p></div>
+          <div class="role-card"><span class="role-num">04 · PERFORMANCE</span><h3>Lead Generation</h3><p>Định hướng Facebook Ads, theo dõi lead, đánh giá chất lượng lead và tối ưu nội dung/thông điệp dựa trên phản hồi thực tế từ khách hàng.</p></div>
+          <div class="role-card"><span class="role-num">05 · EVENT</span><h3>Event & Workshop</h3><p>Lên ý tưởng truyền thông sự kiện, chuẩn bị poster, brochure, slide, nội dung mời tham dự, tài liệu trước/sau sự kiện và hỗ trợ hoạt động tư vấn 1:1.</p></div>
+          <div class="role-card"><span class="role-num">06 · TEAM</span><h3>Team Coordination</h3><p>Điều phối Sales, Dự án, Marketing; book lịch họp, báo cáo tiến độ, tiếp nhận – triển khai kế hoạch và hướng dẫn team trong content, thiết kế, video.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Approach</div>
+          <h2 class="section-title">Cách tôi tiếp cận dự án</h2>
+          <p class="section-desc">Thay vì chỉ tạo nội dung rời rạc, tôi tiếp cận TIARA như một hệ thống cần đồng bộ giữa thương hiệu, thông điệp, lead và quy trình tư vấn.</p>
+        </div>
+        <div class="approach-wrap reveal">
+          <div class="approach-card dark"><h3>1. Xây niềm tin trước khi chuyển đổi</h3><p>Healthcare marketing không thể chỉ nói về dịch vụ. Thương hiệu cần cho khách hàng hiểu rõ vai trò tư vấn, bệnh viện đối tác, quy trình, kỳ vọng và bằng chứng tham khảo.</p></div>
+          <div class="approach-card"><h3>2. Chia khách hàng theo mức độ sẵn sàng</h3><p>Nhóm đã có nhu cầu cần giá, quy trình và hiệu quả tham khảo. Nhóm còn băn khoăn cần nội dung giáo dục, chuyên gia, case study và hành trình khách hàng.</p></div>
+          <div class="approach-card"><h3>3. Nội dung đi theo hành trình quyết định</h3><p>Content được chia thành nhận biết, giáo dục, xây dựng niềm tin, case study và chuyển đổi để không chỉ tạo reach mà còn hỗ trợ sales tư vấn hiệu quả hơn.</p></div>
+          <div class="approach-card"><h3>4. Đồng bộ Marketing – Sales – Dự án</h3><p>Lead chất lượng không chỉ đến từ ads. Chuyển đổi phụ thuộc vào thông điệp, tài liệu tư vấn, quy trình follow-up và cách các phòng ban phối hợp xử lý khách hàng.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deliverables">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Key Deliverables</div>
+          <h2 class="section-title">Những hạng mục đã triển khai</h2>
+          <p class="section-desc">Click vào từng hạng mục để mở popup gallery. Bạn chỉ cần thay placeholder bằng ảnh thật và bổ sung caption theo từng hình.</p>
+        </div>
+        <div class="deliverable-grid reveal">
+          <button class="deliverable-card" data-modal="brand">
+            <div class="thumb-placeholder">BRAND IDENTITY</div>
+            <h3>4.1 Brand Identity</h3>
+            <p>Nền tảng nhận diện thương hiệu, logo, màu sắc, key visual, brochure và các template phục vụ vận hành/tư vấn.</p>
+            <div class="tag-row"><span class="tag">Logo</span><span class="tag">Brochure</span><span class="tag">Key Visual</span></div>
+          </button>
+          <button class="deliverable-card" data-modal="content">
+            <div class="thumb-placeholder">CONTENT SYSTEM</div>
+            <h3>4.2 Content System</h3>
+            <p>Content calendar, tuyến nội dung, fanpage, poster, video script và hệ thống nội dung theo hành trình khách hàng.</p>
+            <div class="tag-row"><span class="tag">Calendar</span><span class="tag">Fanpage</span><span class="tag">Script</span></div>
+          </button>
+          <button class="deliverable-card" data-modal="campaign">
+            <div class="thumb-placeholder">CAMPAIGN & ADS</div>
+            <h3>4.3 Campaign & Ads</h3>
+            <p>Poster quảng cáo, chiến dịch lead generation, biểu đồ tăng trưởng và báo cáo hiệu quả đã được ẩn dữ liệu nhạy cảm.</p>
+            <div class="tag-row"><span class="tag">Facebook Ads</span><span class="tag">Lead</span><span class="tag">Report</span></div>
+          </button>
+          <button class="deliverable-card" data-modal="website">
+            <div class="thumb-placeholder">WEBSITE / LANDING PAGE</div>
+            <h3>4.4 Website / Landing Page</h3>
+            <p>Định hướng UX, content layout, thông điệp website, section dịch vụ, bác sĩ/bệnh viện và quy trình tư vấn.</p>
+            <div class="tag-row"><span class="tag">UX Content</span><span class="tag">Landing Page</span><span class="tag">Website</span></div>
+          </button>
+          <button class="deliverable-card" data-modal="event">
+            <div class="thumb-placeholder">EVENT / WORKSHOP</div>
+            <h3>4.5 Event / Workshop</h3>
+            <p>Poster workshop, slide title, standee, brochure, checklist tổ chức, tài liệu hỗ trợ tư vấn và hình ảnh hậu trường.</p>
+            <div class="tag-row"><span class="tag">Workshop</span><span class="tag">Slide</span><span class="tag">Event Kit</span></div>
+          </button>
+          <button class="deliverable-card" data-modal="video">
+            <div class="thumb-placeholder">VIDEO / VISUAL</div>
+            <h3>4.6 Video & Visual Production</h3>
+            <p>Ý tưởng video, script, visual direction, thumbnail, reel/outro, moodboard và key frame cho truyền thông đa kênh.</p>
+            <div class="tag-row"><span class="tag">Video Script</span><span class="tag">Thumbnail</span><span class="tag">Visual</span></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Results</div>
+          <h2 class="section-title">Kết quả & tác động</h2>
+          <p class="section-desc">Các chỉ số có thể được làm tròn hoặc ẩn một phần để bảo mật dữ liệu nội bộ.</p>
+        </div>
+        <div class="results-grid reveal">
+          <div class="result-card"><strong>20–40%</strong><span>Lead chất lượng tăng đều qua các tháng nhờ tối ưu nội dung, thông điệp và phối hợp xử lý lead.</span></div>
+          <div class="result-card"><strong>300%</strong><span>Doanh thu vượt KPI so với kế hoạch đầu năm trong giai đoạn triển khai dự án.</span></div>
+          <div class="result-card"><strong>Full System</strong><span>Hình thành nền tảng brand, content, tài liệu tư vấn, event kit và workflow phối hợp phòng ban.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learning">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Strategic Learnings</div>
+          <h2 class="section-title">Góc nhìn chiến lược sau dự án</h2>
+        </div>
+        <div class="learning-list reveal">
+          <div class="learning-item"><div class="num">01</div><div><h3>Healthcare marketing cần xây dựng niềm tin trước</h3><p>Khách hàng không chỉ cần biết dịch vụ là gì, mà cần hiểu quy trình, vai trò tư vấn, bệnh viện đối tác, kỳ vọng và bằng chứng tham khảo.</p></div></div>
+          <div class="learning-item"><div class="num">02</div><div><h3>Lead chất lượng đến từ hệ thống, không chỉ từ ads</h3><p>Ads tạo điểm chạm đầu tiên, nhưng chuyển đổi phụ thuộc vào content, tài liệu tư vấn, sales script, follow-up và cách xử lý lead.</p></div></div>
+          <div class="learning-item"><div class="num">03</div><div><h3>Visual premium phải đi cùng sự thận trọng chuyên môn</h3><p>Với dịch vụ y tế cao cấp, hình ảnh cần sang trọng, rõ ràng và an toàn; tránh giật tít hoặc tạo kỳ vọng quá mức.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div>
+            <h2>Muốn xem thêm các dự án khác?</h2>
+            <p>Quay lại portfolio chính để xem thêm Maple Leaf, VASS, Rotman và Minh Châu.</p>
+          </div>
+          <a href="./index.html" class="btn btn-primary">Quay lại Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Châu Ngọc Huy · TIARA Healthcare Center Case Study</div>
+  </footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <div class="modal-title">
+          <h2 id="modalTitle">Gallery</h2>
+          <p id="modalIntro">Mô tả hạng mục.</p>
+        </div>
+        <button class="modal-close" id="modalClose" aria-label="Đóng popup">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-layout">
+          <div class="modal-gallery" id="modalGallery"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modalData = {
+      brand: {
+        title: '4.1 Brand Identity',
+        intro: 'Nền tảng nhận diện thương hiệu cho TIARA: từ logo, màu sắc, tài liệu tư vấn đến các template phục vụ vận hành và chăm sóc khách hàng.',
+        infoTitle: 'Vai trò & cách trình bày',
+        infoText: 'Tôi tham gia xây dựng nền tảng nhận diện thương hiệu cho TIARA, từ logo, màu sắc, tài liệu tư vấn, brochure đến các template phục vụ vận hành và chăm sóc khách hàng.',
+        checklist: ['Logo TIARA', 'Màu sắc thương hiệu', 'Font chữ', 'Key visual', 'Brochure', 'Name card nếu có', 'Template hợp đồng / form tư vấn / phiếu thông tin'],
+        note: 'Gợi ý: chèn 6–10 ảnh gồm logo, brand guideline, brochure, form tư vấn, hợp đồng mockup và key visual. Có thể làm mờ thông tin nội bộ.',
+        gallery: [
+          ['BRAND-01.jpg', 'Logo TIARA', 'Thay bằng ảnh logo chính thức hoặc mockup logo trên nền sáng/tối.'],
+          ['BRAND-02.jpg', 'Brand Color', 'Thay bằng ảnh bảng màu, gradient, icon hoặc visual guideline.'],
+          ['BRAND-03.jpg', 'Key Visual', 'Thay bằng poster/key visual đại diện cho định hướng thương hiệu.'],
+          ['BRAND-04.jpg', 'Brochure', 'Thay bằng ảnh brochure/sales kit đã thiết kế.'],
+          ['BRAND-05.jpg', 'Template Hợp Đồng', 'Thay bằng ảnh đã che thông tin nhạy cảm.'],
+          ['BRAND-06.jpg', 'Phiếu Thông Tin', 'Thay bằng form tư vấn hoặc phiếu thông tin bệnh nhân đã làm mờ dữ liệu.']
+        ]
+      },
+      content: {
+        title: '4.2 Content System',
+        intro: 'Hệ thống nội dung được xây theo hành trình khách hàng, từ giáo dục thị trường, xây dựng niềm tin đến chuyển đổi tư vấn.',
+        infoTitle: 'Nhóm tuyến nội dung',
+        infoText: 'Tôi xây dựng content calendar, tuyến nội dung fanpage/website/video và các nhóm content phù hợp với từng giai đoạn nhận thức của khách hàng.',
+        checklist: ['Content calendar', 'Screenshot fanpage', 'Bài viết tiêu biểu', 'Poster truyền thông', 'Kịch bản video', 'Education / Trust / Conversion / Care Journey / Parent Insight / Premium Wellness Content'],
+        note: 'Gợi ý: chèn screenshot content calendar, fanpage, 6–9 poster đẹp nhất và một vài khung video script.',
+        gallery: [
+          ['CONTENT-01.jpg', 'Content Calendar', 'Kế hoạch nội dung theo tuần/tháng và nhóm mục tiêu.'],
+          ['CONTENT-02.jpg', 'Fanpage Screenshot', 'Tổng quan hệ thống nội dung trên fanpage.'],
+          ['CONTENT-03.jpg', 'Education Content', 'Giải thích liệu pháp, cơ chế, đối tượng phù hợp.'],
+          ['CONTENT-04.jpg', 'Trust Content', 'Bác sĩ, bệnh viện, quy trình, tiêu chuẩn y khoa.'],
+          ['CONTENT-05.jpg', 'Conversion Content', 'Tư vấn 1:1, voucher, workshop, case study.'],
+          ['CONTENT-06.jpg', 'Video Script', 'Kịch bản video hoặc khung nội dung video.']
+        ]
+      },
+      campaign: {
+        title: '4.3 Campaign & Ads',
+        intro: 'Các chiến dịch tạo lead, poster quảng cáo, báo cáo và biểu đồ tăng trưởng được trình bày theo hướng bảo mật dữ liệu nội bộ.',
+        infoTitle: 'Performance & Lead Generation',
+        infoText: 'Tôi tham gia định hướng Facebook Ads, theo dõi lead, đánh giá chất lượng lead và tối ưu thông điệp dựa trên phản hồi khách hàng.',
+        checklist: ['Screenshot chiến dịch quảng cáo nếu được phép', 'Poster quảng cáo', 'Số liệu lead theo tháng', 'Biểu đồ tăng trưởng lead', 'Tỉ lệ chuyển đổi nếu có', 'Chi phí/lead nếu được phép công khai'],
+        note: 'Một số chỉ số nên được ẩn hoặc làm tròn để bảo mật dữ liệu nội bộ.',
+        gallery: [
+          ['ADS-01.jpg', 'Campaign Overview', 'Screenshot chiến dịch đã ẩn tên tệp khách hàng/ngân sách nếu cần.'],
+          ['ADS-02.jpg', 'Poster Quảng Cáo', 'Visual dùng cho chiến dịch lead generation.'],
+          ['ADS-03.jpg', 'Lead Growth Chart', 'Biểu đồ tăng trưởng lead theo tháng/quý.'],
+          ['ADS-04.jpg', 'KPI Dashboard', 'Bảng theo dõi hiệu quả đã làm mờ dữ liệu nhạy cảm.'],
+          ['ADS-05.jpg', 'Creative Testing', 'Các mẫu creative/message được test.'],
+          ['ADS-06.jpg', 'Insight Report', 'Tổng hợp insight từ phản hồi lead/sales.']
+        ]
+      },
+      website: {
+        title: '4.4 Website / Landing Page',
+        intro: 'Định hướng nội dung, bố cục và thông điệp website để khách hàng hiểu rõ dịch vụ, đối tác y khoa, quy trình tư vấn và hành trình đồng hành.',
+        infoTitle: 'UX Content & Layout',
+        infoText: 'Tôi tham gia định hướng nội dung, bố cục và thông điệp cho website, giúp khách hàng hiểu rõ dịch vụ, đối tác y khoa, quy trình tư vấn và hành trình đồng hành.',
+        checklist: ['Screenshot hero section', 'Screenshot section dịch vụ', 'Screenshot bác sĩ / bệnh viện', 'Screenshot quy trình tư vấn', 'Vai trò trong UX/content/layout'],
+        note: 'Gợi ý: chèn screenshot desktop và mobile để thể hiện tư duy UX/content rõ hơn.',
+        gallery: [
+          ['WEB-01.jpg', 'Hero Section', 'Thông điệp chính và CTA trên trang chủ/landing page.'],
+          ['WEB-02.jpg', 'Service Section', 'Section mô tả nhóm dịch vụ hoặc nhóm khách hàng.'],
+          ['WEB-03.jpg', 'Doctor / Hospital Section', 'Thông tin chuyên gia, bệnh viện đối tác và yếu tố niềm tin.'],
+          ['WEB-04.jpg', 'Process Section', 'Quy trình tư vấn, đánh giá hồ sơ và đồng hành.'],
+          ['WEB-05.jpg', 'Mobile Layout', 'Giao diện mobile nếu có.'],
+          ['WEB-06.jpg', 'UX Content Note', 'Ghi chú layout/content direction nếu có.']
+        ]
+      },
+      event: {
+        title: '4.5 Event / Workshop',
+        intro: 'Truyền thông sự kiện, thiết kế tài liệu hỗ trợ tư vấn và phối hợp các bộ phận để chuẩn bị workshop, hội thảo và tư vấn chuyên sâu.',
+        infoTitle: 'Event Marketing Kit',
+        infoText: 'Tôi tham gia phát triển truyền thông sự kiện, thiết kế tài liệu hỗ trợ tư vấn và phối hợp các bộ phận để chuẩn bị cho workshop, hội thảo và các buổi tư vấn chuyên sâu.',
+        checklist: ['Poster workshop', 'Slide title', 'Hình setup sự kiện', 'Standee', 'Brochure', 'Hình tư vấn 1:1 nếu được phép', 'Checklist tổ chức', 'Hình hậu trường'],
+        note: 'Lưu ý: với ảnh khách hàng/phụ huynh, nên che mặt hoặc dùng ảnh đã được phép công khai.',
+        gallery: [
+          ['EVENT-01.jpg', 'Poster Workshop', 'Poster truyền thông sự kiện/workshop.'],
+          ['EVENT-02.jpg', 'Slide Title', 'Slide mở đầu hoặc deck thuyết trình.'],
+          ['EVENT-03.jpg', 'Setup Event', 'Không gian setup, bàn tư vấn, backdrop, standee.'],
+          ['EVENT-04.jpg', 'Brochure / Handout', 'Tài liệu phát cho khách hàng tại sự kiện.'],
+          ['EVENT-05.jpg', 'Checklist Tổ Chức', 'Checklist chuẩn bị trước/sau sự kiện.'],
+          ['EVENT-06.jpg', 'Behind The Scenes', 'Ảnh hậu trường hoặc phối hợp team.']
+        ]
+      },
+      video: {
+        title: '4.6 Video & Visual Production',
+        intro: 'Ý tưởng video, script, visual direction và assets hỗ trợ truyền thông đa kênh, đảm bảo nội dung dễ hiểu nhưng vẫn giữ chuẩn y tế.',
+        infoTitle: 'Video / Visual Direction',
+        infoText: 'Tôi phát triển ý tưởng video, script, visual direction và các assets hỗ trợ truyền thông đa kênh, đảm bảo nội dung vừa dễ hiểu, vừa giữ được tính chuyên nghiệp trong lĩnh vực y tế.',
+        checklist: ['Thumbnail video', 'Kịch bản video', 'Before/after layout poster nếu có', 'Ảnh reel/outro', 'Moodboard visual', 'Một số video key frame'],
+        note: 'Gợi ý: chèn thumbnail, storyboard, script, moodboard và key frame để thể hiện quá trình sáng tạo.',
+        gallery: [
+          ['VIDEO-01.jpg', 'Thumbnail Video', 'Ảnh thumbnail cho video/reel.'],
+          ['VIDEO-02.jpg', 'Video Script', 'Kịch bản video hoặc voice-over.'],
+          ['VIDEO-03.jpg', 'Moodboard Visual', 'Mood & tone, màu sắc, phong cách hình ảnh.'],
+          ['VIDEO-04.jpg', 'Before / After Layout', 'So sánh layout trước/sau nếu có.'],
+          ['VIDEO-05.jpg', 'Reel / Outro', 'Ảnh outro, frame dọc 9:16 hoặc video key visual.'],
+          ['VIDEO-06.jpg', 'Video Key Frame', 'Một số khung hình tiêu biểu trong video.']
+        ]
+      }
+    };
+
+    const modal = document.getElementById('modalBackdrop');
+    const closeBtn = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalIntro = document.getElementById('modalIntro');
+    const modalGallery = document.getElementById('modalGallery');
+
+    function isImagePath(path) {
+      return /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(path);
+    }
+
+    function openModal(key) {
+      const data = modalData[key];
+      if (!data) return;
+      modalTitle.textContent = data.title;
+      modalIntro.textContent = data.intro;
+      modalGallery.innerHTML = data.gallery.map(([src, title, caption]) => `
+        <div class="gallery-item">
+          <div class="image-slot" data-src="${src}">${src}<br><small>Thay bằng ảnh thật</small></div>
+          <div class="gallery-caption"><strong>${title}</strong><span>${caption}</span></div>
+        </div>
+      `).join('');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', () => openModal(btn.dataset.modal));
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .14 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
